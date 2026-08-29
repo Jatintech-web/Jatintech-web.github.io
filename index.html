@@ -4,104 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+          content="Jatin Tanchangya - Web Developer Portfolio">
+
     <title>Jatin Tanchangya | Web Developer</title>
-    <meta name="description" content="Jatin Tanchangya - Web Developer, App Developer and Creative Technologist.">
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= HEADER ================= -->
 
-<header class="navbar">
-    <div class="nav-container">
+<header class="header">
 
-        <a href="#home" class="logo">
-            Jatin<span>Tech</span>
-        </a>
+    <a href="#home" class="logo">
+        <span>JT</span>
+        <div>
+            <strong>Jatin Tanchangya</strong>
+            <small>Web Developer</small>
+        </div>
+    </a>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-        <nav id="navMenu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <a href="#contact" class="cv-btn">
+        <i class="fa-solid fa-download"></i>
+        Download CV
+    </a>
 
-        <button class="theme-btn" id="themeBtn">🌙</button>
+    <button class="menu-btn" id="menuBtn">
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-    </div>
 </header>
 
 
 <!-- ================= HERO ================= -->
 
-<section id="home" class="hero">
+<section class="hero" id="home">
 
     <div class="hero-content">
 
-        <p class="hello">HELLO, I'M</p>
+        <p class="hello">Hi, I'm</p>
 
-        <h1>
-            Jatin <span>Tanchangya</span>
-        </h1>
+        <h1>Jatin Tanchangya</h1>
 
-        <h2>
-            Web Developer & App Creator
-        </h2>
+        <h2>Web Developer</h2>
 
         <p class="hero-text">
-            I create modern websites, mobile-friendly applications
-            and smart digital solutions using modern web technologies.
+            I build modern, responsive and user-friendly websites
+            with clean code and attractive design.
         </p>
 
         <div class="hero-buttons">
+
             <a href="#projects" class="btn primary">
-                View My Projects
+                View Projects
+                <i class="fa-solid fa-arrow-right"></i>
             </a>
 
             <a href="#contact" class="btn secondary">
+                <i class="fa-regular fa-comment"></i>
                 Contact Me
             </a>
+
         </div>
 
-        <div class="socials">
 
-            <a href="https://github.com/Jatintech-web" target="_blank">
-                GitHub
+        <div class="social-icons">
+
+            <a href="mailto:Jatintcg8@gmail.com" title="Email">
+                <i class="fa-solid fa-envelope"></i>
             </a>
 
-            <a href="#contact">
-                Contact
+            <a href="https://wa.me/8801636098352"
+               target="_blank"
+               title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.facebook.com/jatintcg360"
+               target="_blank"
+               title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://github.com/Jatintech-web"
+               target="_blank"
+               title="GitHub">
+                <i class="fa-brands fa-github"></i>
             </a>
 
         </div>
 
     </div>
 
-    <div class="hero-card">
 
-        <div class="profile-circle">
-            JT
-        </div>
+    <div class="hero-image">
 
-        <h3>Jatin Tanchangya</h3>
+        <div class="image-ring">
 
-        <p>Creative Developer</p>
+            <img src="profile.jpg"
+                 alt="Jatin Tanchangya">
 
-        <div class="code-box">
-            <span>&lt;developer&gt;</span>
-            <br>
-            <span>Building Ideas...</span>
-            <br>
-            <span>&lt;/developer&gt;</span>
         </div>
 
     </div>
@@ -111,86 +127,97 @@
 
 <!-- ================= ABOUT ================= -->
 
-<section id="about" class="section">
+<section class="section about" id="about">
 
     <div class="section-title">
-        <p>ABOUT ME</p>
-        <h2>Who I Am</h2>
+
+        <h2>About Me</h2>
+
+        <span></span>
+
     </div>
+
 
     <div class="about-grid">
 
-        <div class="about-text">
+        <div class="contact-card">
 
-            <h3>Building Ideas Into Digital Experiences.</h3>
-
-            <p>
-                I'm Jatin Tanchangya, a passionate developer interested
-                in web development, application development and
-                creative technology.
-            </p>
-
-            <p>
-                I enjoy creating useful digital tools, responsive
-                interfaces and applications that solve real-world
-                problems.
-            </p>
-
-            <div class="about-stats">
-
+            <div class="info-item">
+                <i class="fa-solid fa-user"></i>
                 <div>
-                    <strong>Web</strong>
-                    <span>Development</span>
+                    <strong>Name</strong>
+                    <p>Jatin Tanchangya</p>
                 </div>
+            </div>
 
+            <div class="info-item">
+                <i class="fa-solid fa-envelope"></i>
                 <div>
-                    <strong>App</strong>
-                    <span>Development</span>
+                    <strong>Email</strong>
+                    <p>Jatintcg8@gmail.com</p>
                 </div>
+            </div>
 
+            <div class="info-item">
+                <i class="fa-brands fa-whatsapp"></i>
                 <div>
-                    <strong>Firebase</strong>
-                    <span>Projects</span>
+                    <strong>WhatsApp</strong>
+                    <p>01636098352</p>
                 </div>
+            </div>
 
+            <div class="info-item">
+                <i class="fa-brands fa-facebook"></i>
+                <div>
+                    <strong>Facebook</strong>
+                    <p>Jatin Tanchangya</p>
+                </div>
             </div>
 
         </div>
 
-        <div class="about-box">
 
-            <div class="terminal">
+        <div class="about-text">
 
-                <div class="terminal-top">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <h3>I'm a Web Developer</h3>
+
+            <p>
+                I am passionate about creating modern websites,
+                web applications and digital solutions.
+                I enjoy transforming ideas into real-world
+                projects using modern web technologies.
+            </p>
+
+            <p>
+                My goal is to create clean, responsive,
+                fast and user-friendly digital experiences.
+            </p>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>10+</h3>
+                    <p>Projects</p>
                 </div>
 
-                <div class="terminal-body">
+                <div class="stat">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>5+</h3>
+                    <p>Projects Completed</p>
+                </div>
 
-                    <p>
-                        <b>const</b> developer = {
-                    </p>
+                <div class="stat">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>500+</h3>
+                    <p>Hours Coding</p>
+                </div>
 
-                    <p>
-                        name: <span>"Jatin Tanchangya"</span>,
-                    </p>
-
-                    <p>
-                        role: <span>"Web Developer"</span>,
-                    </p>
-
-                    <p>
-                        passion: <span>"Technology"</span>,
-                    </p>
-
-                    <p>
-                        status: <span>"Building"</span>
-                    </p>
-
-                    <p>};</p>
-
+                <div class="stat">
+                    <i class="fa-solid fa-rocket"></i>
+                    <h3>100%</h3>
+                    <p>Passion</p>
                 </div>
 
             </div>
@@ -204,67 +231,57 @@
 
 <!-- ================= SKILLS ================= -->
 
-<section id="skills" class="section skills-section">
+<section class="section skills" id="skills">
 
     <div class="section-title">
-        <p>MY EXPERTISE</p>
-        <h2>Skills & Technologies</h2>
+
+        <h2>My Skills</h2>
+
+        <span></span>
+
     </div>
+
 
     <div class="skills-grid">
 
-        <div class="skill-card">
-            <div class="skill-icon">🌐</div>
+        <div class="skill">
+            <i class="fa-brands fa-html5"></i>
             <h3>HTML</h3>
-            <p>Semantic & responsive web structure.</p>
-            <div class="progress">
-                <span style="width: 90%"></span>
-            </div>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">🎨</div>
+        <div class="skill">
+            <i class="fa-brands fa-css3-alt"></i>
             <h3>CSS</h3>
-            <p>Modern UI, responsive design & animations.</p>
-            <div class="progress">
-                <span style="width: 88%"></span>
-            </div>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">⚡</div>
+        <div class="skill">
+            <i class="fa-brands fa-js"></i>
             <h3>JavaScript</h3>
-            <p>Interactive websites and applications.</p>
-            <div class="progress">
-                <span style="width: 80%"></span>
-            </div>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">🔥</div>
-            <h3>Firebase</h3>
-            <p>Database, authentication and cloud services.</p>
-            <div class="progress">
-                <span style="width: 75%"></span>
-            </div>
+        <div class="skill">
+            <i class="fa-brands fa-bootstrap"></i>
+            <h3>Bootstrap</h3>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">📱</div>
-            <h3>App Development</h3>
-            <p>Mobile-friendly applications and interfaces.</p>
-            <div class="progress">
-                <span style="width: 78%"></span>
-            </div>
+        <div class="skill">
+            <i class="fa-solid fa-wind"></i>
+            <h3>Tailwind CSS</h3>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">🚀</div>
-            <h3>GitHub</h3>
-            <p>Version control and project deployment.</p>
-            <div class="progress">
-                <span style="width: 82%"></span>
-            </div>
+        <div class="skill">
+            <i class="fa-brands fa-github"></i>
+            <h3>Git & GitHub</h3>
+        </div>
+
+        <div class="skill">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <h3>Responsive Design</h3>
+        </div>
+
+        <div class="skill">
+            <i class="fa-solid fa-code"></i>
+            <h3>VS Code</h3>
         </div>
 
     </div>
@@ -274,45 +291,145 @@
 
 <!-- ================= PROJECTS ================= -->
 
-<section id="projects" class="section">
+<section class="section projects" id="projects">
 
     <div class="section-title">
-        <p>MY WORK</p>
-        <h2>Featured Projects</h2>
+
+        <h2>My Projects</h2>
+
+        <span></span>
+
     </div>
 
-    <div class="projects-grid">
 
-        <!-- Project 1 -->
+    <div class="project-grid">
+
+
+        <!-- PROJECT 1 -->
 
         <article class="project-card">
 
-            <div class="project-image bazar">
-                🛒
+            <div class="project-icon">
+                <i class="fa-solid fa-globe"></i>
             </div>
 
             <div class="project-content">
 
-                <span class="project-tag">
-                    Web App
-                </span>
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A modern responsive personal portfolio
+                    website built with HTML, CSS and JavaScript.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="#" class="project-btn">
+                    Live Demo
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-card">
+
+            <div class="project-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>E-Commerce Website</h3>
+
+                <p>
+                    Responsive online shopping website
+                    with product listing and modern UI.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="#" class="project-btn">
+                    Live Demo
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-card">
+
+            <div class="project-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>Task Manager App</h3>
+
+                <p>
+                    A simple task management web application
+                    for adding and managing daily tasks.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="#" class="project-btn">
+                    Live Demo
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 4 -->
+
+        <article class="project-card">
+
+            <div class="project-icon">
+                <i class="fa-solid fa-database"></i>
+            </div>
+
+            <div class="project-content">
 
                 <h3>Bazar Hisab</h3>
 
                 <p>
-                    A shared bazar management and accounting
-                    application with live database synchronization.
+                    Shared bazar accounting system with
+                    real-time data synchronization.
                 </p>
 
-                <div class="tech">
+                <div class="tags">
                     <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
                     <span>Firebase</span>
+                    <span>JavaScript</span>
                 </div>
 
-                <a href="#" class="project-link">
-                    View Project →
+                <a href="#" class="project-btn">
+                    View Project
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
 
             </div>
@@ -320,72 +437,65 @@
         </article>
 
 
-        <!-- Project 2 -->
+        <!-- PROJECT 5 -->
 
         <article class="project-card">
 
-            <div class="project-image needle">
-                🧵
+            <div class="project-icon">
+                <i class="fa-solid fa-fire"></i>
             </div>
 
             <div class="project-content">
 
-                <span class="project-tag">
-                    Management System
-                </span>
+                <h3>CHT FF TOPUP</h3>
+
+                <p>
+                    Gaming top-up platform interface with
+                    payment and product management features.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>Firebase</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="#" class="project-btn">
+                    View Project
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 6 -->
+
+        <article class="project-card">
+
+            <div class="project-icon">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <div class="project-content">
 
                 <h3>Needle Management System</h3>
 
                 <p>
-                    Inventory and needle tracking system designed
-                    for organized production management.
+                    Inventory and needle tracking system
+                    designed for production management.
                 </p>
 
-                <div class="tech">
+                <div class="tags">
                     <span>HTML</span>
                     <span>CSS</span>
                     <span>JavaScript</span>
                 </div>
 
-                <a href="#" class="project-link">
-                    View Project →
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <!-- Project 3 -->
-
-        <article class="project-card">
-
-            <div class="project-image dream">
-                🛍️
-            </div>
-
-            <div class="project-content">
-
-                <span class="project-tag">
-                    E-Commerce
-                </span>
-
-                <h3>Dreamshop Admin</h3>
-
-                <p>
-                    Modern e-commerce administration dashboard
-                    for products, orders, users and sales.
-                </p>
-
-                <div class="tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Firebase</span>
-                </div>
-
-                <a href="#" class="project-link">
-                    View Project →
+                <a href="#" class="project-btn">
+                    View Project
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
 
             </div>
@@ -399,76 +509,77 @@
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact" class="section contact-section">
+<section class="section contact" id="contact">
 
     <div class="section-title">
 
-        <p>GET IN TOUCH</p>
+        <h2>Get In Touch</h2>
 
-        <h2>Let's Work Together</h2>
+        <span></span>
+
+    </div>
+
+
+    <p class="contact-intro">
+        I'm always open to discussing new projects,
+        creative ideas and opportunities.
+    </p>
+
+
+    <div class="contact-grid">
+
+
+        <a href="mailto:Jatintcg8@gmail.com"
+           class="contact-box">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <div>
+                <h3>Email</h3>
+                <p>Jatintcg8@gmail.com</p>
+            </div>
+
+        </a>
+
+
+        <a href="https://wa.me/8801636098352"
+           target="_blank"
+           class="contact-box">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            <div>
+                <h3>WhatsApp</h3>
+                <p>01636098352</p>
+            </div>
+
+        </a>
+
+
+        <a href="https://www.facebook.com/jatintcg360"
+           target="_blank"
+           class="contact-box">
+
+            <i class="fa-brands fa-facebook"></i>
+
+            <div>
+                <h3>Facebook</h3>
+                <p>Jatin Tanchangya</p>
+            </div>
+
+        </a>
+
 
     </div>
 
-    <div class="contact-box">
 
-        <div class="contact-info">
+    <a href="mailto:Jatintcg8@gmail.com"
+       class="talk-btn">
 
-            <h3>Have a project in mind?</h3>
+        Let's Talk
+        <i class="fa-solid fa-paper-plane"></i>
 
-            <p>
-                Feel free to contact me for web development,
-                application development or creative digital projects.
-            </p>
-
-            <div class="contact-item">
-                <span>📧</span>
-                <div>
-                    <small>Email</small>
-                    <p>your-email@example.com</p>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <span>🐙</span>
-                <div>
-                    <small>GitHub</small>
-                    <p>github.com/Jatintech-web</p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <form id="contactForm">
-
-            <input
-                type="text"
-                id="name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                id="message"
-                rows="6"
-                placeholder="Your Message"
-                required
-            ></textarea>
-
-            <button type="submit" class="btn primary">
-                Send Message
-            </button>
-
-        </form>
-
-    </div>
+    </a>
 
 </section>
 
@@ -477,22 +588,45 @@
 
 <footer>
 
-    <div class="footer-logo">
-        Jatin<span>Tech</span>
+    <div class="footer-social">
+
+        <a href="mailto:Jatintcg8@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+
+        <a href="https://wa.me/8801636098352"
+           target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <a href="https://www.facebook.com/jatintcg360"
+           target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+
+        <a href="https://github.com/Jatintech-web"
+           target="_blank">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
     </div>
 
     <p>
-        © 2026 Jatin Tanchangya. All Rights Reserved.
+        © <span id="year"></span> Jatin Tanchangya.
+        All Rights Reserved.
     </p>
 
-    <a href="https://github.com/Jatintech-web" target="_blank">
-        GitHub
-    </a>
-
 </footer>
+
+
+<!-- BACK TO TOP -->
+
+<button id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
 
 
 <script src="script.js"></script>
 
 </body>
-  </html>
+                </html>
