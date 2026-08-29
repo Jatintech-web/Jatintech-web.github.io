@@ -1,32 +1,36 @@
-// ================= MOBILE MENU =================
+// ================= MENU =================
 
 const menuBtn = document.getElementById("menuBtn");
 const navbar = document.getElementById("navbar");
 
 menuBtn.addEventListener("click", () => {
 
-    navbar.classList.toggle("show");
+    navbar.classList.toggle("active");
 
     const icon = menuBtn.querySelector("i");
 
-    if (navbar.classList.contains("show")) {
+    if (navbar.classList.contains("active")) {
+
         icon.classList.remove("fa-bars");
         icon.classList.add("fa-xmark");
+
     } else {
+
         icon.classList.remove("fa-xmark");
         icon.classList.add("fa-bars");
+
     }
 
 });
 
 
-// Close menu when clicking a link
+// ================= CLOSE MENU =================
 
 document.querySelectorAll(".navbar a").forEach(link => {
 
     link.addEventListener("click", () => {
 
-        navbar.classList.remove("show");
+        navbar.classList.remove("active");
 
         const icon = menuBtn.querySelector("i");
 
@@ -38,89 +42,41 @@ document.querySelectorAll(".navbar a").forEach(link => {
 });
 
 
-// ================= ACTIVE NAVIGATION =================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-
-    });
-
-});
-
-
-// ================= BACK TO TOP =================
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 400) {
-        topBtn.style.display = "grid";
-    } else {
-        topBtn.style.display = "none";
-    }
-
-});
-
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
 // ================= CURRENT YEAR =================
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
 
-// ================= SMOOTH SCROLL =================
+// ================= SCROLL EFFECT =================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+window.addEventListener("scroll", () => {
 
-    anchor.addEventListener("click", function (e) {
+    const header = document.querySelector(".header");
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+    if (window.scrollY > 50) {
 
-        if (target) {
+        header.style.boxShadow =
+            "0 10px 30px rgba(0,0,0,0.25)";
 
-            e.preventDefault();
+    } else {
 
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+        header.style.boxShadow = "none";
 
-        }
+    }
 
-    });
+});
+
+
+// ================= IMAGE ERROR CHECK =================
+
+const profileImage =
+    document.querySelector(".profile-image");
+
+profileImage.addEventListener("error", () => {
+
+    console.log(
+        "Profile image could not be loaded."
+    );
 
 });
