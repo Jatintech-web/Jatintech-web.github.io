@@ -1,15 +1,33 @@
-// ================= MENU =================
+/* ================= PRELOADER ================= */
+
+window.addEventListener("load", function () {
+
+    const preloader = document.getElementById("preloader");
+
+    setTimeout(() => {
+        preloader.style.opacity = "0";
+
+        setTimeout(() => {
+            preloader.style.display = "none";
+        }, 400);
+
+    }, 500);
+
+});
+
+
+/* ================= MOBILE MENU ================= */
 
 const menuBtn = document.getElementById("menuBtn");
 const navbar = document.getElementById("navbar");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click", function () {
 
-    navbar.classList.toggle("active");
+    navbar.classList.toggle("show");
 
     const icon = menuBtn.querySelector("i");
 
-    if (navbar.classList.contains("active")) {
+    if (navbar.classList.contains("show")) {
 
         icon.classList.remove("fa-bars");
         icon.classList.add("fa-xmark");
@@ -24,13 +42,13 @@ menuBtn.addEventListener("click", () => {
 });
 
 
-// ================= CLOSE MENU =================
+/* Close menu after clicking link */
 
 document.querySelectorAll(".navbar a").forEach(link => {
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click", function () {
 
-        navbar.classList.remove("active");
+        navbar.classList.remove("show");
 
         const icon = menuBtn.querySelector("i");
 
@@ -42,41 +60,143 @@ document.querySelectorAll(".navbar a").forEach(link => {
 });
 
 
-// ================= CURRENT YEAR =================
+/* ================= TYPING EFFECT ================= */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+const typingElement = document.getElementById("typing");
+
+const words = [
+    "Web Developer",
+    "Web Designer",
+    "JavaScript Developer",
+    "Firebase Developer",
+    "Programmer"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
 
-// ================= SCROLL EFFECT =================
+function typeEffect() {
 
-window.addEventListener("scroll", () => {
+    const currentWord = words[wordIndex];
 
-    const header = document.querySelector(".header");
+    if (!deleting) {
 
-    if (window.scrollY > 50) {
+        typingElement.textContent =
+            currentWord.substring(0, charIndex + 1);
 
-        header.style.boxShadow =
-            "0 10px 30px rgba(0,0,0,0.25)";
+        charIndex++;
+
+        if (charIndex === currentWord.length) {
+
+            deleting = true;
+
+            setTimeout(typeEffect, 1500);
+
+            return;
+
+        }
 
     } else {
 
-        header.style.boxShadow = "none";
+        typingElement.textContent =
+            currentWord.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex === 0) {
+
+            deleting = false;
+
+            wordIndex++;
+
+            if (wordIndex >= words.length) {
+                wordIndex = 0;
+            }
+
+        }
+
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 60 : 100
+    );
+
+}
+
+typeEffect();
+
+
+/* ================= ACTIVE NAV ================= */
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar a");
+
+
+window.addEventListener("scroll", function () {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") === "#" + current
+        ) {
+            link.classList.add("active");
+        }
+
+    });
+
+});
+
+
+/* ================= BACK TO TOP ================= */
+
+const topBtn = document.getElementById("topBtn");
+
+
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 500) {
+
+        topBtn.classList.add("show");
+
+    } else {
+
+        topBtn.classList.remove("show");
 
     }
 
 });
 
 
-// ================= IMAGE ERROR CHECK =================
+topBtn.addEventListener("click", function () {
 
-const profileImage =
-    document.querySelector(".profile-image");
-
-profileImage.addEventListener("error", () => {
-
-    console.log(
-        "Profile image could not be loaded."
-    );
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 });
+
+
+/* ================= CURRENT YEAR ================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
