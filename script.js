@@ -1,161 +1,126 @@
-// ================= MENU =================
+// ================= MOBILE MENU =================
 
 const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
+const navbar = document.getElementById("navbar");
 
 menuBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
 
-    if (navMenu.classList.contains("active")) {
-        menuBtn.textContent = "✕";
+    navbar.classList.toggle("show");
+
+    const icon = menuBtn.querySelector("i");
+
+    if (navbar.classList.contains("show")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
     } else {
-        menuBtn.textContent = "☰";
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
     }
+
 });
 
 
-// Close menu after clicking a link
+// Close menu when clicking a link
 
-document.querySelectorAll("nav a").forEach(link => {
+document.querySelectorAll(".navbar a").forEach(link => {
 
     link.addEventListener("click", () => {
 
-        navMenu.classList.remove("active");
+        navbar.classList.remove("show");
 
-        menuBtn.textContent = "☰";
+        const icon = menuBtn.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
 
     });
 
 });
 
 
-// ================= DARK / LIGHT MODE =================
+// ================= ACTIVE NAVIGATION =================
 
-const themeBtn = document.getElementById("themeBtn");
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar a");
 
-themeBtn.addEventListener("click", () => {
+window.addEventListener("scroll", () => {
 
-    document.body.classList.toggle("light");
+    let current = "";
 
-    if (document.body.classList.contains("light")) {
+    sections.forEach(section => {
 
-        themeBtn.textContent = "☀️";
+        const sectionTop = section.offsetTop - 150;
 
-        localStorage.setItem("theme", "light");
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
 
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+
+    });
+
+});
+
+
+// ================= BACK TO TOP =================
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 400) {
+        topBtn.style.display = "grid";
     } else {
-
-        themeBtn.textContent = "🌙";
-
-        localStorage.setItem("theme", "dark");
-
+        topBtn.style.display = "none";
     }
 
 });
 
 
-// Load saved theme
+topBtn.addEventListener("click", () => {
 
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "light") {
-
-    document.body.classList.add("light");
-
-    themeBtn.textContent = "☀️";
-
-}
-
-
-// ================= CONTACT FORM =================
-
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    if (!name || !email || !message) {
-
-        alert("Please fill in all fields.");
-
-        return;
-
-    }
-
-    const subject = encodeURIComponent(
-        "Portfolio Contact from " + name
-    );
-
-    const body = encodeURIComponent(
-        "Name: " + name +
-        "\nEmail: " + email +
-        "\n\nMessage:\n" + message
-    );
-
-    window.location.href =
-        "mailto:your-email@example.com?subject=" +
-        subject +
-        "&body=" +
-        body;
-
-});
-
-
-// ================= SCROLL ANIMATION =================
-
-const cards = document.querySelectorAll(
-    ".skill-card, .project-card, .about-text, .about-box"
-);
-
-const observer = new IntersectionObserver(
-
-    entries => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.12
-    }
-
-);
-
-
-cards.forEach(card => {
-
-    card.style.opacity = "0";
-    card.style.transform = "translateY(25px)";
-    card.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-
-    observer.observe(card);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 });
 
 
 // ================= CURRENT YEAR =================
 
-const year = new Date().getFullYear();
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-const footerText = document.querySelector("footer p");
 
-if (footerText) {
+// ================= SMOOTH SCROLL =================
 
-    footerText.textContent =
-        `© ${year} Jatin Tanchangya. All Rights Reserved.`;
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-}
+    anchor.addEventListener("click", function (e) {
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (target) {
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+});
