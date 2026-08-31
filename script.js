@@ -69,7 +69,8 @@ const words = [
     "Web Designer",
     "JavaScript Developer",
     "Firebase Developer",
-    "Programmer"
+    "SEO Specialist"
+    "Android App Builder Specialist"
 ];
 
 let wordIndex = 0;
