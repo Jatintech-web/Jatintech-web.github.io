@@ -1,203 +1,420 @@
-/* ================= PRELOADER ================= */
+/* =========================================================
+   JATIN TANCHANGYA PORTFOLIO
+   Fast • Lightweight • Error Free
+   ========================================================= */
 
-window.addEventListener("load", function () {
+"use strict";
+
+
+/* ================= DOM READY ================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ================= ELEMENTS ================= */
 
     const preloader = document.getElementById("preloader");
+    const menuBtn = document.getElementById("menuBtn");
+    const navbar = document.getElementById("navbar");
+    const typing = document.getElementById("typing");
+    const topBtn = document.getElementById("topBtn");
+    const year = document.getElementById("year");
 
-    setTimeout(() => {
-        preloader.style.opacity = "0";
-
-        setTimeout(() => {
-            preloader.style.display = "none";
-        }, 400);
-
-    }, 500);
-
-});
+    const navLinks = document.querySelectorAll(".navbar a");
+    const sections = document.querySelectorAll("main section[id]");
 
 
-/* ================= MOBILE MENU ================= */
+    /* ================= CURRENT YEAR ================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navbar = document.getElementById("navbar");
-
-menuBtn.addEventListener("click", function () {
-
-    navbar.classList.toggle("show");
-
-    const icon = menuBtn.querySelector("i");
-
-    if (navbar.classList.contains("show")) {
-
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-
-    } else {
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
+    if (year) {
+        year.textContent = new Date().getFullYear();
     }
 
-});
 
+    /* ================= PRELOADER ================= */
 
-/* Close menu after clicking link */
+    window.addEventListener("load", () => {
 
-document.querySelectorAll(".navbar a").forEach(link => {
+        if (!preloader) return;
 
-    link.addEventListener("click", function () {
+        preloader.style.opacity = "0";
+        preloader.style.visibility = "hidden";
 
-        navbar.classList.remove("show");
-
-        const icon = menuBtn.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
+        setTimeout(() => {
+            preloader.remove();
+        }, 450);
 
     });
 
-});
+
+    /* ================= MOBILE MENU ================= */
+
+    if (menuBtn && navbar) {
+
+        menuBtn.addEventListener("click", () => {
+
+            const isOpen = navbar.classList.toggle("show");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                isOpen ? "Close Menu" : "Open Menu"
+            );
 
 
-/* ================= TYPING EFFECT ================= */
+            /* Change hamburger icon */
 
-const typingElement = document.getElementById("typing");
+            const icon = menuBtn.querySelector("i");
 
-const words = [
-    "Web Developer",
-    "Web Designer",
-    "JavaScript Developer",
-    "Firebase Developer",
-    "SEO Specialist"
-    "Android App Builder Specialist"
-];
+            if (icon) {
 
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
+                icon.classList.toggle(
+                    "fa-bars",
+                    !isOpen
+                );
+
+                icon.classList.toggle(
+                    "fa-xmark",
+                    isOpen
+                );
+
+            }
+
+        });
 
 
-function typeEffect() {
+        /* Close menu after clicking a link */
 
-    const currentWord = words[wordIndex];
+        navLinks.forEach(link => {
 
-    if (!deleting) {
+            link.addEventListener("click", () => {
 
-        typingElement.textContent =
-            currentWord.substring(0, charIndex + 1);
+                navbar.classList.remove("show");
 
-        charIndex++;
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-        if (charIndex === currentWord.length) {
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
 
-            deleting = true;
+                const icon = menuBtn.querySelector("i");
 
-            setTimeout(typeEffect, 1500);
+                if (icon) {
 
-            return;
+                    icon.classList.remove("fa-xmark");
+
+                    icon.classList.add("fa-bars");
+
+                }
+
+            });
+
+        });
+
+    }
+
+
+    /* ================= TYPING EFFECT ================= */
+
+    if (typing) {
+
+        const words = [
+            "Web Developer",
+            "Android App Developer",
+            "SEO Specialist",
+            "WordPress Specialist"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typingSpeed = 85;
+        const deletingSpeed = 45;
+        const pauseAfterWord = 1400;
+
+
+        function typeEffect() {
+
+            const currentWord = words[wordIndex];
+
+            if (!deleting) {
+
+                typing.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
+
+                charIndex++;
+
+
+                /* Word completed */
+
+                if (charIndex === currentWord.length) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typeEffect,
+                        pauseAfterWord
+                    );
+
+                    return;
+                }
+
+            } else {
+
+                typing.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
+
+                charIndex--;
+
+
+                /* Word deleted */
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (wordIndex + 1) % words.length;
+
+                }
+
+            }
+
+
+            setTimeout(
+                typeEffect,
+                deleting
+                    ? deletingSpeed
+                    : typingSpeed
+            );
 
         }
 
-    } else {
 
-        typingElement.textContent =
-            currentWord.substring(0, charIndex - 1);
+        /* Start after page is ready */
 
-        charIndex--;
+        setTimeout(
+            typeEffect,
+            500
+        );
 
-        if (charIndex === 0) {
+    }
 
-            deleting = false;
 
-            wordIndex++;
+    /* ================= ACTIVE NAVIGATION ================= */
 
-            if (wordIndex >= words.length) {
-                wordIndex = 0;
+    function updateActiveNav() {
+
+        const scrollPosition =
+            window.scrollY + 150;
+
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            const sectionId =
+                section.getAttribute("id");
+
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionTop + sectionHeight
+            ) {
+
+                navLinks.forEach(link => {
+
+                    link.classList.remove("active");
+
+                    const href =
+                        link.getAttribute("href");
+
+                    if (href === `#${sectionId}`) {
+
+                        link.classList.add("active");
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    /* ================= BACK TO TOP ================= */
+
+    function updateTopButton() {
+
+        if (!topBtn) return;
+
+        if (window.scrollY > 450) {
+
+            topBtn.classList.add("show");
+
+        } else {
+
+            topBtn.classList.remove("show");
+
+        }
+
+    }
+
+
+    if (topBtn) {
+
+        topBtn.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    }
+
+
+    /* ================= OPTIMIZED SCROLL ================= */
+
+    let ticking = false;
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (!ticking) {
+
+                window.requestAnimationFrame(() => {
+
+                    updateActiveNav();
+
+                    updateTopButton();
+
+                    ticking = false;
+
+                });
+
+                ticking = true;
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* ================= INITIAL STATE ================= */
+
+    updateActiveNav();
+
+    updateTopButton();
+
+
+    /* ================= CLOSE MENU OUTSIDE ================= */
+
+    document.addEventListener("click", event => {
+
+        if (!navbar || !menuBtn) return;
+
+        const clickedInsideMenu =
+            navbar.contains(event.target);
+
+        const clickedButton =
+            menuBtn.contains(event.target);
+
+
+        if (
+            !clickedInsideMenu &&
+            !clickedButton
+        ) {
+
+            navbar.classList.remove("show");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                "Open Menu"
+            );
+
+            const icon =
+                menuBtn.querySelector("i");
+
+            if (icon) {
+
+                icon.classList.remove("fa-xmark");
+
+                icon.classList.add("fa-bars");
+
             }
 
         }
 
-    }
+    });
 
-    setTimeout(
-        typeEffect,
-        deleting ? 60 : 100
+
+    /* ================= ESC KEY ================= */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+
+                if (!navbar || !menuBtn) return;
+
+                navbar.classList.remove("show");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
+
+                const icon =
+                    menuBtn.querySelector("i");
+
+                if (icon) {
+
+                    icon.classList.remove("fa-xmark");
+
+                    icon.classList.add("fa-bars");
+
+                }
+
+            }
+
+        }
     );
 
-}
-
-typeEffect();
-
-
-/* ================= ACTIVE NAV ================= */
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar a");
-
-
-window.addEventListener("scroll", function () {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-        }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") === "#" + current
-        ) {
-            link.classList.add("active");
-        }
-
-    });
-
 });
-
-
-/* ================= BACK TO TOP ================= */
-
-const topBtn = document.getElementById("topBtn");
-
-
-window.addEventListener("scroll", function () {
-
-    if (window.scrollY > 500) {
-
-        topBtn.classList.add("show");
-
-    } else {
-
-        topBtn.classList.remove("show");
-
-    }
-
-});
-
-
-topBtn.addEventListener("click", function () {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
-/* ================= CURRENT YEAR ================= */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
